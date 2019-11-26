@@ -1,10 +1,10 @@
-<img><br><br>
+<img src="Img/Cold-Staking-HowTo/coldstaking.jpg" width="720">
 
 # PIVX Cold Staking How-To
 
 **Cold staking requires two PIVX wallets: one to hold the funds (this can be also a hardware wallet and does not need to be always online) and another one, the hot-node, to do the staking (this needs to be online 24/7).**
 
-<p>In order to setup cold-staking, you need to perform the following steps:</p>
+<p>In order to setup cold-staking, you need to perform the following steps (either with the command line interface, or with the graphical interface):</p>
 
 1) [Generate a "staking address" from the staker wallet](#1) (if you don't have one already).
 
@@ -14,9 +14,8 @@
 
 4) [Whitelist the owner address on your staker](#4) (if you haven't already).
 
-5) [Additional RPC functions](#5)
-
 To send more delegations, using the same addresses-pair, just replicate step 3 of this guide.
+- [Additional RPC functions](#rpc)
 
 <br>
 
@@ -29,7 +28,7 @@ Staking addresses must be owned by the __staker__ wallet (the one that is online
 ```
 pivx-cli getnewstakingaddress
 ```
-You don't need to create a new staking address for each delegation. You can reuse your previously generated addresses. To list them, do:
+>You don't need to create a new staking address for each delegation. You can reuse your previously generated addresses. To list them, do:
 ```
 pivx-cli liststakingaddresses
 ```
@@ -80,7 +79,7 @@ To delegate coins you need to send a special "delegation contract" transaction.
 ```
 pivx-cli delegatestake "S1t2a3kab9c8c71VA78xxxy4MxZg6vgeS6" 1000 "DMJRSsuU9zfyrvxVaAEFQqK4MxZg34fk"
 ```
-If the owner address is omitted, a new address is automatically generated from the wallet.<br>
+>If the owner address is omitted, a new address is automatically generated from the wallet.<br>
 If you want to delegate to an *external address* (using an owner address not present in the wallet, e.g. one from a hardware device), then you need to add `true` at the end of the command (check `pivx-cli help delegatestake` for more info).
 
 <br>
@@ -104,12 +103,12 @@ In order to stake delegations, the owner address must be whitelisted by the stak
 ```
 pivx-cli delegatoradd <ownerAddress>
 ```
-Once a delegator address is whitelisted, it remains so, even for successive delegations.<br>
+>Once a delegator address is whitelisted, it remains so, even for successive delegations.<br>
 To remove a particular address from the whitelist, do
 ```
 pivx-cli delegatorremove <ownerAddress>
 ```
-To view the current whitelisted addresses, do
+>To view the current whitelisted addresses, do
 ```
 pivx-cli listdelegators
 ```
@@ -121,13 +120,13 @@ pivx-cli listdelegators
 >The delegation is visible in the "Staker" tab of the coldstaking widget:
 <img><br>
 To whitelist the delegator, click on its row and select "Stake" from the contextual menu
-<img><br>
-To remove the delegator from the whitelist, select "Stop staking" from the contextual menu:
-<img><br>
+<br><img src="Img/Cold-Staking-HowTo/04-01.png" width="670"><br><br>
+To remove the delegator from the whitelist, select "Blacklist" from the contextual menu:
+<br><img src="Img/Cold-Staking-HowTo/04-02.png" width="670"><br><br>
 
 <br>
 
-### 5) <a name="5"></a>Additional RPC functions
+### <a name="rpc"></a>Additional RPC functions
 
 These are other JSON-RPC calls accessible via console or `pivx-cli`.<br>
 Check the help for more info on each one.<br>
